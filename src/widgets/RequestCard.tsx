@@ -1,4 +1,6 @@
-function RequestCard(props) {
+import type { IRepairRequest } from "../entities/model";
+
+function RequestCard(props: IRepairRequest) {
   return (
     <div className="mx-auto p-5 bg-white m-2 rounded-xl flex justify-between">
       <div>

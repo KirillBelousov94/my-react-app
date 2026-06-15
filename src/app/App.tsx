@@ -40,7 +40,6 @@ function App() {
               name={card.name}
               description={card.description}
               status={card.status}
-              numberRequest={card.idRequest}
               priority={card.priority}
               date={card.date}
             />))}
