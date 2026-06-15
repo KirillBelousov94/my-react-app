@@ -18,15 +18,9 @@ function App() {
   const requestCards: RepairRequest[] = [
     { idRequest: 1, name: "Иванов П.С", description: "Замена лампочек в коридоре", status: "В работе", priority: "Средний", date: "12.06.2026" },
     { idRequest: 2, name: "Смирнова А.К", description: "Телефон", status: "Завершено", priority: "Высокий", date: "13.06.2026" },
-    {
-      idRequest: 3, name: "Кузнецов Д.В", description: "Не работает интернет", status: "Новая", priority: "Высокий", date: "14.06.2026"
-    },
-    {
-      idRequest: 4, name: "Орлова М.С", description: "Замена клавиатуры", status: "В работе", priority: "Низкий", date: "14.06.2026"
-    },
-    {
-      idRequest: 5, name: "Петров А.А", description: "Проблема с Windows", status: "Отменена", priority: "Средний", date: "15.06.2026"
-    }
+    { idRequest: 3, name: "Кузнецов Д.В", description: "Не работает интернет", status: "Новая", priority: "Высокий", date: "14.06.2026" },
+    { idRequest: 4, name: "Орлова М.С", description: "Замена клавиатуры", status: "В работе", priority: "Низкий", date: "14.06.2026" },
+    { idRequest: 5, name: "Петров А.А", description: "Проблема с Windows", status: "Отменена", priority: "Средний", date: "15.06.2026"}
   ];
 
   return (
@@ -40,12 +34,9 @@ function App() {
             <Filters />
           </div>
 
-
           <Statistics
             requests={requestCards}
           />
-
-
 
           {requestCards.map((card) => (
             <RequestCard
@@ -64,7 +55,7 @@ function App() {
 
       </div>
     </div>
-  );
+  )
 }
 
 export default App;

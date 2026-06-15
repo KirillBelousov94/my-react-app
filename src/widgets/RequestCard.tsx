@@ -1,6 +1,6 @@
 function RequestCard(props) {
   return (
-    <div className="mx-auto p-5 bg-green-100 m-2 rounded-xl flex justify-between">
+    <div className="mx-auto p-5 bg-white m-2 rounded-xl flex justify-between">
       <div>
         <p className="text-2xl font-medium">{props.description}</p>
         <h3>Клиент: {props.name} | Номер заявки #{props.idRequest} | {props.date}</h3>
