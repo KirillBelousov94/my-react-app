@@ -1,6 +1,6 @@
 function Footer() {
   return (
-    <footer>
+    <footer className="mx-auto">
       <p>© 2026</p>
     </footer>
   );

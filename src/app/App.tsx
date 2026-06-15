@@ -1,27 +1,69 @@
 import Header from "../widgets/Header";
 import Footer from "../widgets/Footer";
+import RequestCard from "../widgets/RequestCard";
+import Search from "../widgets/Search";
+import Filters from "../widgets/Filters";
+import Statistics from "../widgets/Statistics";
 
 function App() {
-  const cards = [
-    { id: 1, title: "Телефон", price: 1000 },
-    { id: 2, title: "Планшет", price: 5000 },
-    { id: 3, title: "Ноутбук", price: 10000 }
+  interface RepairRequest {
+    idRequest: number;
+    name: string;
+    description: string;
+    status: string;
+    priority: string;
+    date: string;
+  }
+
+  const requestCards: RepairRequest[] = [
+    { idRequest: 1, name: "Иванов П.С", description: "Замена лампочек в коридоре", status: "В работе", priority: "Средний", date: "12.06.2026" },
+    { idRequest: 2, name: "Смирнова А.К", description: "Телефон", status: "Завершено", priority: "Высокий", date: "13.06.2026" },
+    {
+      idRequest: 3, name: "Кузнецов Д.В", description: "Не работает интернет", status: "Новая", priority: "Высокий", date: "14.06.2026"
+    },
+    {
+      idRequest: 4, name: "Орлова М.С", description: "Замена клавиатуры", status: "В работе", priority: "Низкий", date: "14.06.2026"
+    },
+    {
+      idRequest: 5, name: "Петров А.А", description: "Проблема с Windows", status: "Отменена", priority: "Средний", date: "15.06.2026"
+    }
   ];
 
   return (
-    <>
-      <Header />
+    <div className="bg-zinc-900">
+      <div className="min-h-screen flex flex-col max-w-7xl mx-auto">
+        <Header />
+        <main className="flex-1">
 
-      <h2>Техника которую можем  починить</h2>
-      {cards.map((card) => (
-        <div className="card p-5" key={card.id}>
-          <h3>{card.title}</h3>
-          <p className="text-red-600">{card.price}</p>
-        </div>
-      ))}
+          <div className="flex text-white gap-4" >
+            <Search />
+            <Filters />
+          </div>
 
-      <Footer />
-    </>
+
+          <Statistics
+            requests={requestCards}
+          />
+
+
+
+          {requestCards.map((card) => (
+            <RequestCard
+              key={card.idRequest}
+              idRequest={card.idRequest}
+              name={card.name}
+              description={card.description}
+              status={card.status}
+              numberRequest={card.idRequest}
+              priority={card.priority}
+              date={card.date}
+            />))}
+        </main>
+
+        <Footer />
+
+      </div>
+    </div>
   );
 }
 
