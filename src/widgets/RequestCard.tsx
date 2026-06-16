@@ -1,8 +1,15 @@
 import type { IRepairRequest } from "../entities/model";
 
-function RequestCard(props: IRepairRequest) {
+interface RequestCardProps extends IRepairRequest {
+  onClick?: () => void;
+}
+
+function RequestCard(props: RequestCardProps) {
   return (
-    <div className="mx-auto p-5 bg-white m-2 rounded-xl flex justify-between">
+    <div
+      onClick={props.onClick}
+      className="mx-auto p-5 bg-white m-2 rounded-xl flex justify-between cursor-pointer hover:bg-zinc-100 transition"
+    >
       <div>
         <p className="text-2xl font-medium">{props.description}</p>
         <h3>Клиент: {props.name} | Номер заявки #{props.idRequest} | {props.date}</h3>

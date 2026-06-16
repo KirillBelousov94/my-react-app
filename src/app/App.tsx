@@ -1,9 +1,12 @@
+import { useState } from "react";
+
 import Header from "../shared/Header";
 import Footer from "../shared/Footer";
 import RequestCard from "../widgets/RequestCard";
 import Search from "../widgets/Search";
 import Filters from "../widgets/Filters";
 import Statistics from "../widgets/Statistics";
+import RequestDetails from "../widgets/RequestDetails";
 
 import type { IRepairRequest } from "../entities/model";
 
@@ -17,6 +20,9 @@ function App() {
     { idRequest: 4, name: "Орлова М.С", description: "Замена клавиатуры", status: "В работе", priority: "Низкий", date: "14.06.2026" },
     { idRequest: 5, name: "Петров А.А", description: "Проблема с Windows", status: "Отменена", priority: "Средний", date: "15.06.2026" }
   ];
+
+  const [selectedRequest, setSelectedRequest] = useState<IRepairRequest | null>(null);
+
  
   return (
     <div className="bg-zinc-900">
@@ -33,16 +39,28 @@ function App() {
             requests={requestCards}
           />
 
-          {requestCards.map((card) => (
-            <RequestCard
-              key={card.idRequest}
-              idRequest={card.idRequest}
-              name={card.name}
-              description={card.description}
-              status={card.status}
-              priority={card.priority}
-              date={card.date}
-            />))}
+<div className="flex gap-4">
+            <div className="flex-1">
+              {requestCards.map((card) => (
+                <RequestCard
+                  key={card.idRequest}
+                  idRequest={card.idRequest}
+                  name={card.name}
+                  description={card.description}
+                  status={card.status}
+                  priority={card.priority}
+                  date={card.date}
+                  onClick={() => setSelectedRequest(card)}
+                />))}
+            </div>
+
+            {selectedRequest && (
+              <RequestDetails
+                request={selectedRequest}
+                onClose={() => setSelectedRequest(null)}
+              />
+            )}
+          </div>
         </main>
 
         <Footer />
