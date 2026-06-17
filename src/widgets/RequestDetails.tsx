@@ -1,4 +1,4 @@
-import type { IRepairRequest } from "../entities/model";
+import type { IRepairRequest } from "../entities/request/model";
 
 interface RequestDetailsProps {
   request: IRepairRequest;

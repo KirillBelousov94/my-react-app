@@ -3,12 +3,12 @@ import { useState } from "react";
 import Header from "../shared/Header";
 import Footer from "../shared/Footer";
 import RequestCard from "../widgets/RequestCard";
-import Search from "../widgets/Search";
-import Filters from "../widgets/Filters";
+import Search from "../features/serach-requests/Search";
+import Filters from "../features/filter-requests/ui/Filters";
 import Statistics from "../widgets/Statistics";
 import RequestDetails from "../widgets/RequestDetails";
 
-import type { IRepairRequest } from "../entities/model";
+import type { IRepairRequest } from "../entities/request/model";
 
 
 function App() {
@@ -23,7 +23,6 @@ function App() {
 
   const [selectedRequest, setSelectedRequest] = useState<IRepairRequest | null>(null);
 
- 
   return (
     <div className="bg-zinc-900">
       <div className="min-h-screen flex flex-col max-w-7xl mx-auto">
@@ -39,7 +38,7 @@ function App() {
             requests={requestCards}
           />
 
-<div className="flex gap-4">
+          <div className="flex gap-4">
             <div className="flex-1">
               {requestCards.map((card) => (
                 <RequestCard
